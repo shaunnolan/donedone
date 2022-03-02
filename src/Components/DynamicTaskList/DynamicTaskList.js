@@ -16,7 +16,7 @@ function DynamicTaskList() {
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-  });
+  }, [tasks]);
 
   const addTask = (task, e) => {
     e.preventDefault();
