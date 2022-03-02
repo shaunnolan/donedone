@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AddTask() {
+export default function AddTask(props) {
   return (
     <div>
       <form className="row g-2">
@@ -12,7 +12,8 @@ export default function AddTask() {
           ></input>
         </div>
         <div className="col-auto">
-          <button className="btn btn-primary">Add Task</button>
+          <button className="btn btn-primary"
+            onClick={props.addTask}>Add Task</button>
         </div>
       </form>
     </div>

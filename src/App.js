@@ -1,12 +1,10 @@
 import "./App.css";
-import AddTask from "./Components/AddTask/AddTask";
-import TaskList from "./Components/TaskList/TaskList";
+import DynamicTaskList from "./Components/DynamicTaskList/DynamicTaskList";
 
 function App() {
   return (
     <div className="App">
-      <AddTask />
-      <TaskList />
+      <DynamicTaskList />
     </div>
   );
 }
