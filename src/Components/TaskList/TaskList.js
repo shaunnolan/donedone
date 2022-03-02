@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Task from "../Task/Task";
 
 export default function TaskList() {
@@ -12,6 +12,10 @@ export default function TaskList() {
       description: "The description for task #2",
     },
   ]);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  });
 
   return tasks.map((task) => {
     return <Task title={task.title} description={task.description} />;
