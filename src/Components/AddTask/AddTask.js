@@ -7,6 +7,11 @@ export default function AddTask(props) {
     setNewTask(e.target.value);
   };
 
+  const addTask = (e) => {
+    props.addTask(newTask, e);
+    setNewTask("");
+  };
+
   return (
     <div>
       <form className="row g-2">
@@ -20,10 +25,7 @@ export default function AddTask(props) {
           ></input>
         </div>
         <div className="col-auto">
-          <button
-            className="btn btn-primary"
-            onClick={(e) => props.addTask(newTask, e)}
-          >
+          <button className="btn btn-primary" onClick={addTask}>
             Add Task
           </button>
         </div>
