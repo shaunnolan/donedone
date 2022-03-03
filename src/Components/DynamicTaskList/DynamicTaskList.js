@@ -3,16 +3,14 @@ import AddTask from "../AddTask/AddTask";
 import TaskList from "../TaskList/TaskList";
 
 function DynamicTaskList() {
-  const [tasks, setTasks] = useState([
-    {
-      title: "Task #1",
-      description: "The description for task #1",
-    },
-    {
-      title: "Task #2",
-      description: "The description for task #2",
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const oldTasks = JSON.parse(localStorage.getItem("tasks"));
+
+    if (oldTasks) setTasks(oldTasks);
+    else setTasks([]);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
