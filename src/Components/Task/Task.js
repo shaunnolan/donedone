@@ -1,4 +1,5 @@
 import React from "react";
+import "masonry-layout/masonry";
 
 export default function Task(props) {
   return (
