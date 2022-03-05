@@ -3,9 +3,12 @@ import React, { useState } from "react";
 
 export default function AddTask(props) {
   const [newTask, setNewTask] = useState("");
+  const [hasText, setHasText] = useState(false);
 
   const handleChange = (e) => {
     setNewTask(e.target.value);
+
+    e.target.value.length > 0 ? setHasText(true) : setHasText(false);
   };
 
   const addTask = (e) => {
@@ -25,7 +28,11 @@ export default function AddTask(props) {
         ></input>
       </div>
       <div className="col-auto">
-        <button className="btn btn-primary" onClick={addTask}>
+        <button
+          className="btn btn-primary"
+          onClick={addTask}
+          disabled={!hasText}
+        >
           Add Task
         </button>
       </div>
