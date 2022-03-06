@@ -11,7 +11,11 @@ export default function TaskList(props) {
   return (
     <div className="row masonry-grid">
       {props.tasks.map((task) => (
-        <Task title={task.title} description={task.description} />
+        <Task
+          key={task.title}
+          title={task.title}
+          description={task.description}
+        />
       ))}
     </div>
   );
