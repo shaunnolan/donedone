@@ -26,16 +26,30 @@ function DynamicTaskList() {
       return [
         ...oldTasks,
         {
-          title: task,
+          title: task.title,
+          id: task.id,
         },
       ];
+    });
+  };
+
+  useEffect(() => {});
+
+  const deleteTask = (id, e) => {
+    e.preventDefault();
+
+    console.log("filtering out " + id);
+    setTasks((oldTasks) => {
+      const remainingTasks = oldTasks.filter((t) => t.id !== id);
+      console.log(remainingTasks.length + " tasks remaining");
+      return remainingTasks;
     });
   };
 
   return (
     <>
       <AddTask addTask={addTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onDelete={deleteTask} />
     </>
   );
 }

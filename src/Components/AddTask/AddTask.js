@@ -1,19 +1,35 @@
 import "./AddTask.css";
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AddTask(props) {
-  const [newTask, setNewTask] = useState("");
+  const [newTask, setNewTask] = useState({
+    title: "",
+    id: uuidv4.nil,
+  });
   const [hasText, setHasText] = useState(false);
 
   const handleChange = (e) => {
-    setNewTask(e.target.value);
+    setNewTask((task) => {
+      return {
+        ...task,
+        title: e.target.value,
+      };
+    });
 
     e.target.value.length > 0 ? setHasText(true) : setHasText(false);
   };
 
   const addTask = (e) => {
-    props.addTask(newTask, e);
-    setNewTask("");
+    const task = {
+      ...newTask,
+      id: uuidv4(),
+    };
+    props.addTask(task, e);
+    setNewTask({
+      title: "",
+      id: uuidv4.nil,
+    });
   };
 
   return (
@@ -23,7 +39,7 @@ export default function AddTask(props) {
           className="form-control"
           type="text"
           placeholder="Add another task"
-          value={newTask}
+          value={newTask.title}
           onChange={handleChange}
         ></input>
       </div>
