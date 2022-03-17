@@ -2,7 +2,8 @@ import React from "react";
 
 export default function Task(props) {
   const handleKeyDown = (e) => {
-    if (e.keyCode === 88) {
+    const KEY_X = e.keyCode === 88;
+    if (KEY_X) {
       props.onDelete(props.id, e);
     }
   };
@@ -10,7 +11,8 @@ export default function Task(props) {
   const focusTask = (e) => {
     e.stopPropagation();
     const taskTitle = e.target.querySelector(".task-title");
-    taskTitle.focus();
+
+    if (taskTitle) taskTitle.focus();
   };
 
   return (
