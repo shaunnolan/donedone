@@ -7,16 +7,27 @@ export default function Task(props) {
     }
   };
 
+  const focusTask = (e) => {
+    e.stopPropagation();
+    const taskTitle = e.target.querySelector(".task-title");
+    taskTitle.focus();
+  };
+
   return (
     <div className="col-sm-6 col-lg-4 mb-4">
-      <a className="task" href="#" onKeyDown={handleKeyDown} tabIndex="-1">
-        <div className="card">
-          <div className="card-body">
+      <div className="card">
+        <div className="card-body" onMouseEnter={focusTask}>
+          <a
+            className="task-title"
+            href="#"
+            onKeyDown={handleKeyDown}
+            tabIndex="-1"
+          >
             <h6>{props.title}</h6>
             <p className="card-text">{props.description}</p>
-          </div>
+          </a>
         </div>
-      </a>
+      </div>
     </div>
   );
 }
