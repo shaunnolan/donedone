@@ -3,7 +3,6 @@ import React from "react";
 export default function Task(props) {
   const handleKeyDown = (e) => {
     if (e.keyCode === 88) {
-      console.log("deleting " + props.id);
       props.onDelete(props.id, e);
     }
   };

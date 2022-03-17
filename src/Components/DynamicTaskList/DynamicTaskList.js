@@ -33,15 +33,11 @@ function DynamicTaskList() {
     });
   };
 
-  useEffect(() => {});
-
   const deleteTask = (id, e) => {
     e.preventDefault();
 
-    console.log("filtering out " + id);
     setTasks((oldTasks) => {
       const remainingTasks = oldTasks.filter((t) => t.id !== id);
-      console.log(remainingTasks.length + " tasks remaining");
       return remainingTasks;
     });
   };
