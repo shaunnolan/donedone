@@ -12,9 +12,8 @@ export default function Task(props) {
       <a className="task" href="#" onKeyDown={handleKeyDown} tabIndex="-1">
         <div className="card">
           <div className="card-body">
-            <h5>{props.title}</h5>
+            <h6>{props.title}</h6>
             <p className="card-text">{props.description}</p>
-            <p>{props.id}</p>
           </div>
         </div>
       </a>
