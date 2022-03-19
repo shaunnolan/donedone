@@ -1,6 +1,7 @@
 import "./AddTask.css";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Sherlock from "sherlockjs/sherlock";
 
 export default function AddTask(props) {
   const [newTask, setNewTask] = useState({
@@ -21,9 +22,13 @@ export default function AddTask(props) {
   };
 
   const addTask = (e) => {
+    const thisTask = Sherlock.parse(newTask.title);
+    console.log(thisTask);
+
     const task = {
       ...newTask,
       id: uuidv4(),
+      title: thisTask.eventTitle,
     };
     props.addTask(task, e);
     setNewTask({
