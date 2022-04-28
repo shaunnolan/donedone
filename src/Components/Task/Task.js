@@ -8,6 +8,11 @@ export default function Task(props) {
     }
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    alert("clicked");
+  };
+
   const focusTask = (e) => {
     e.stopPropagation();
     const taskTitle = e.target.querySelector(".task-title");
@@ -18,7 +23,11 @@ export default function Task(props) {
   return (
     <div className="col-sm-6 col-lg-4 mb-4">
       <div className="card">
-        <div className="card-body" onMouseEnter={focusTask}>
+        <div
+          className="card-body"
+          onMouseEnter={focusTask}
+          onClick={handleClick}
+        >
           <a
             className="task-title"
             href="#"
