@@ -4,16 +4,21 @@ import TaskDetail from "../TaskDetail/TaskDetail";
 
 export default function TaskList(props) {
   const [showDetail, setShowDetail] = useState(false);
+  const [selectedTask, setSelectedTask] = useState({});
 
   const handleTaskClick = (e) => {
     var taskId = e.target.closest(".card").getAttribute("taskid");
+    var selectedTask = props.tasks.find((t) => t.id === taskId);
+
     e.preventDefault();
-    console.log(taskId);
+    console.log(selectedTask);
+    setSelectedTask(selectedTask);
     setShowDetail(true);
   };
 
   const handleClose = () => {
     setShowDetail(false);
+    setSelectedTask({});
   };
 
   const tasks = props.tasks.map((task) => {
@@ -32,7 +37,11 @@ export default function TaskList(props) {
   return (
     <>
       <div className="row masonry-grid">{tasks}</div>
-      <TaskDetail show={showDetail} handleClose={handleClose} />
+      <TaskDetail
+        show={showDetail}
+        handleClose={handleClose}
+        task={selectedTask}
+      />
     </>
   );
 }
