@@ -1,0 +1,8 @@
+.task-title {
+  text-decoration: none;
+  color: inherit;
+}
+
+.task-title:hover {
+  color: inherit;
+}
