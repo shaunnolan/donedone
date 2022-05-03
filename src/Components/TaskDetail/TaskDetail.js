@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 
 export default function TaskDetail(props) {
   return (
@@ -10,7 +9,17 @@ export default function TaskDetail(props) {
       </Modal.Header>
 
       <Modal.Body>
-        <p>task detail goes here...</p>
+        <div className="form-floating">
+          <textarea
+            name="description"
+            type="textarea"
+            value={props.task.description}
+            onChange={props.onChange}
+            className="form-control"
+            rows="3"
+          ></textarea>
+          <label htmlFor="taskDescription">Description</label>
+        </div>
       </Modal.Body>
     </Modal>
   );

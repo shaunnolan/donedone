@@ -11,7 +11,6 @@ export default function TaskList(props) {
     var selectedTask = props.tasks.find((t) => t.id === taskId);
 
     e.preventDefault();
-    console.log(selectedTask);
     setSelectedTask(selectedTask);
     setShowDetail(true);
   };
@@ -19,6 +18,15 @@ export default function TaskList(props) {
   const handleClose = () => {
     setShowDetail(false);
     setSelectedTask({});
+  };
+
+  const onTaskChange = (e) => {
+    setSelectedTask((old) => {
+      return {
+        ...old,
+        [e.target.name]: e.target.value,
+      };
+    });
   };
 
   const tasks = props.tasks.map((task) => {
@@ -41,6 +49,7 @@ export default function TaskList(props) {
         show={showDetail}
         handleClose={handleClose}
         task={selectedTask}
+        onChange={onTaskChange}
       />
     </>
   );
