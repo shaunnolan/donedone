@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Task from "../Task/Task";
 import TaskDetail from "../TaskDetail/TaskDetail";
 
@@ -17,7 +17,6 @@ export default function TaskList(props) {
 
   const handleClose = () => {
     setShowDetail(false);
-    setSelectedTask({});
   };
 
   const onTaskChange = (e) => {
@@ -28,6 +27,10 @@ export default function TaskList(props) {
       };
     });
   };
+
+  useEffect(() => {
+    props.onUpdate(selectedTask);
+  }, [selectedTask]);
 
   const tasks = props.tasks.map((task) => {
     return (
@@ -50,6 +53,7 @@ export default function TaskList(props) {
         handleClose={handleClose}
         task={selectedTask}
         onChange={onTaskChange}
+        onUpdate={props.onUpdate}
       />
     </>
   );

@@ -42,10 +42,15 @@ function DynamicTaskList() {
     });
   };
 
+  const updateTask = (task, e) => {
+    var updatedTasks = tasks.map((t) => (t.id !== task.id ? t : task));
+    setTasks(updatedTasks);
+  };
+
   return (
     <>
       <AddTask addTask={addTask} />
-      <TaskList tasks={tasks} onDelete={deleteTask} />
+      <TaskList tasks={tasks} onDelete={deleteTask} onUpdate={updateTask} />
     </>
   );
 }
